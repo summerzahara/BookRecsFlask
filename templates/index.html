@@ -5,11 +5,22 @@
             <h1>Book Recommendations</h1>
         </div>
         <div class="container">
-            {% for book in book_recs %}
-            <ul class="list-group bg-dark py-1">
-                <li class="list-group-item bg-dark border border-light">{{ book }}</li>
-            </ul>
-            {% endfor %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in book_recs %}
+                        <tr>
+                            <td>{{ book[0] }}</td>
+                            <td>{{ book[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

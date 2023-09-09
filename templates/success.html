@@ -1,6 +1,37 @@
 {% extends  "layouts.html" %}
 {% block content %}
     <div class="container">
-        <h1>Welcome, {{ email }}</h1>
+        <p class="text-success">Welcome, {{ name }}</p>
+        <div class="container">
+            <h1>Book Recommendations</h1>
+        </div>
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in book_recs %}
+                        <tr>
+                            <td>{{ book[0] }}</td>
+                            <td>{{ book[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="container">
+                <form action="/success" method="POST" class="form-inline my-2 my-lg-0">
+                    <div class="form-group pr-2">
+                        <label for="new_rec" class="font-weight-bold mx-2">Enter New Book:</label>
+                        <input type="text" class="form-control mx-2" id="new_rec_title" name="new_rec_title" placeholder="The Bible">
+                        <input type="text" class="form-control mx-2" id="new_rec_author" name="new_rec_author" placeholder="God">
+                    </div>
+                    <button class="btn btn-primary my-2 my-sm-3 mx-2" type="submit">Add New Rec</button>
+            </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
